@@ -1,0 +1,23 @@
+openapi: 3.0.2
+
+info:
+  title: studio-app APIs
+  version: "0.1"
+servers:
+  - url: "http://localhost"
+    description: ローカルサーバ
+
+paths:
+  /health-check:
+    $ref: ./paths/health-check.yml
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+tags:
+  - name: ogp-backend
+    description: "ogp用API"

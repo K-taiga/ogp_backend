@@ -1,5 +1,5 @@
 up:
-	docker-compose up -d app web db
+	docker-compose up -d app web db api-doc
 
 down:
 	docker-compose down

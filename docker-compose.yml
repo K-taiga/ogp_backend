@@ -31,14 +31,21 @@ services:
     - "3306:3306"
     volumes:
       - db-data:/var/lib/mysql
-  phpmyadmin:
-    container_name: phpmyadmin
-    image: phpmyadmin/phpmyadmin
-    links:
-      - db:db
+  api-doc:
+    image: swaggerapi/swagger-ui
     ports:
-      - 80:80
-    restart: always
+      - ${API_DOC_PORT:-8080}:8080
+    volumes:
+      - ./document/openapi/generated/openapi.json:/openapi.json
+    environment:
+      SWAGGER_JSON: /openapi.json
+  db-doc:
+    build:
+      context: .
+      dockerfile: ./docker/tbls/Dockerfile
+    volumes:
+      - ./document:/work
+    command: doc --force mysql://root:${DB_ROOT_PASSWORD:-root}@db:3306/${DB_DATABASE:-ogp}
 volumes:
   app-vendor-volume:
   db-data:

@@ -1,0 +1,7 @@
+get:
+  tags:
+    - health-check
+  summary: "ヘルスチェック"
+  responses:
+    "200":
+      description: ok
