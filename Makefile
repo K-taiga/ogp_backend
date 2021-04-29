@@ -27,7 +27,7 @@ app-clear:
 
 # シェルに入る
 app-sh:
-	docker-compose exec app ash
+	docker-compose exec app bash
 
 # tinker使うよ
 app-tinker:
