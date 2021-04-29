@@ -42,4 +42,13 @@ class MessageController extends Controller {
 
         return response()->json($id);
     }
+
+    public function show($id) {
+        $message = Message::find($id);
+
+        return response()->json([
+            'message' => $message->content,
+            'url'     => config('app.image_url') . '/' . $message->file_path,
+        ]);
+    }
 }

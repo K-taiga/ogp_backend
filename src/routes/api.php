@@ -14,3 +14,4 @@ use Illuminate\Http\Request;
 */
 
 Route::post('/messages','MessageController@store');
+Route::get('/messages/{id}','MessageController@show');
